@@ -63,5 +63,10 @@ validate $? "installing nodejs dependencies"
 cp /home/ec2-user/expense-shell/backend.service /etc/systemd/system/backend.service &>>$logfile
 validate $? "copied backend service"
 
+systemctl daemon-reload
+systemctl start backend
+systemctl enable backend
+validate $? "start&enable backend"
+
 
 
