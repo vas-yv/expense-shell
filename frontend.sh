@@ -42,3 +42,7 @@ validate $? "remove existing content"
 
 curl -o /tmp/frontend.zip https://expense-builds.s3.us-east-1.amazonaws.com/expense-frontend-v2.zip &>>$logfile
 validate $? "downloading frontend code"
+
+cd /usr/share/nginx/html &>>$logfile
+unzip /tmp/frontend.zip  &>>$logfile
+validate $? "extracting frontend"
