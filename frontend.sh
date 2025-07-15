@@ -46,3 +46,9 @@ validate $? "downloading frontend code"
 cd /usr/share/nginx/html &>>$logfile
 unzip /tmp/frontend.zip  &>>$logfile
 validate $? "extracting frontend"
+
+cp /home/ec2-user/expense-shell/expense.conf /etc/nginx/default/expense.conf &>>$logfile
+validate $? "copied expense conf"
+
+systemctl restart nginx &>>$logfile
+validate $? "restartinh nginx"
