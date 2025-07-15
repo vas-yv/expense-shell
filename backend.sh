@@ -28,25 +28,25 @@ else
      echo "your super user"
 fi
 
-dnf module disable nodejs -y &>>logfile
+dnf module disable nodejs -y &>>$logfile
 validate $? "disable nodejs"
 
-dnf module enable nodejs:20 -y &>>logfile
+dnf module enable nodejs:20 -y &>>$logfile
 validate $? "enable nodejs"
 
-dnf install nodejs -y &>>logfile
+dnf install nodejs -y &>>$logfile
 validate $? "install nodejs"
 
-id expense &>>logfile
+id expense &>>$logfile
 if [ $? -ne 0 ]
 then
-    useradd expense &>>logfile
+    useradd expense &>>$logfile
     validate $? "creating expense user"
 else
     echo -e "expense user already created"
 fi
 
-mkdir /app
+mkdir -p /app &>>$logfile
 validate $? " creating app user"
 
 
