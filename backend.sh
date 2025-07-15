@@ -49,5 +49,8 @@ fi
 mkdir -p /app &>>$logfile
 validate $? " creating app user"
 
+curl -o /tmp/backend.zip https://expense-builds.s3.us-east-1.amazonaws.com/expense-backend-v2.zip
+validate $? "download code"
+
 
 
