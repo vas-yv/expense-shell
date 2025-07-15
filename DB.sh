@@ -1,4 +1,5 @@
 #!/bin/bash
+
 Userid=$(id -u)
 timestamp=$(date +%F-%H-%M-%S)
 script_name=$(echo $0 | cut -d "." -f1)
@@ -43,7 +44,8 @@ validate $? "starting mysql"
 
 #shell script is not idempotent in in nature
 
-mysql -h 172.31.94.246 -u root -p${mysql_root_password} 'show databases;' &>>$loggfile
+mysql -h 172.31.94.246 -u root -p"${mysql_root_password}" -e "SHOW DATABASES;" &>>$logfile
+
 if [ $? -ne 0 ]
 then
     mysql_secure_installation --set-root-pass ${mysql_root_password}
