@@ -37,5 +37,11 @@ validate $? "enable nodejs"
 dnf install nodejs -y &>>logfile
 validate $? "install nodejs"
 
-useradd expense &>>logfile
-validate $? "crate user"
+id expense &>>logfile
+if [ $? -ne 0 ]
+then
+    useradd expense &>>logfile
+    validate $? "creating expense user"
+else
+    echo -e "expense user already created"
+fi    
