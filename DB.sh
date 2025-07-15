@@ -1,7 +1,7 @@
 #!/bin/bash
 Userid=$(id -u)
 timestamp=$(date +%F-%H-%M-%S)
-script_name=$(echo $0 + cut -d "." -f1)
+script_name=$(echo $0 | cut -d "." -f1)
 logfile=/tmp/$script_name-$timestamp.log
 R="\e[31m"
 G="\e[32m"
