@@ -7,7 +7,7 @@ logfile=/tmp/$script_name-$timestamp.log
 
 R="\e[31m"
 G="\e[32m"
-N="\e[33m"
+N="\e[0m"
 
 validate(){
     if [ $1 -ne 0 ]
@@ -47,8 +47,8 @@ cd /usr/share/nginx/html &>>$logfile
 unzip /tmp/frontend.zip  &>>$logfile
 validate $? "extracting frontend"
 
-cp /home/ec2-user/expense-shell/expense.conf /etc/nginx/default/expense.conf &>>$logfile
+cp /home/ec2-user/expense-shell/expense.conf /etc/nginx/default.d/expense.conf &>>$logfile
 validate $? "copied expense conf"
 
 systemctl restart nginx &>>$logfile
-validate $? "restartinh nginx"
+validate $? "restarting nginx"
