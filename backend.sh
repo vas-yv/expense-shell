@@ -63,10 +63,14 @@ validate $? "installing nodejs dependencies"
 cp /home/ec2-user/expense-shell/backend.service /etc/systemd/system/backend.service &>>$logfile
 validate $? "copied backend service"
 
-systemctl daemon-reload
-systemctl start backend
-systemctl enable backend
+systemctl daemon-reload &>>$logfile
+systemctl start backend &>>$logfile
+systemctl enable backend &>>$logfile
 validate $? "start&enable backend"
+
+dnf install mysql -y &>>$logfile
+validate $? " installing mysql client"
+
 
 
 
