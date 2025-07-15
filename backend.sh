@@ -60,5 +60,8 @@ validate $? "extracted backend code"
 npm install &>>$logfile
 validate $? "installing nodejs dependencies"
 
+cp /home/ec2-user/expense-shell/backend.service /etc/systemd/system/backend.service &>>$logfile
+validate $? "copied backend service"
+
 
 
