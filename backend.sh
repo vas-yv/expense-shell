@@ -55,7 +55,10 @@ validate $? "download code"
 cd /app
 rm -rf /app/*
 unzip /tmp/backend.zip &>>$logfile
-validate $? "extracted backend code" 
+validate $? "extracted backend code"
+
+npm install &>>$logfile
+validate $? "installing nodejs dependencies"
 
 
 
