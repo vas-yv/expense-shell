@@ -44,4 +44,10 @@ then
     validate $? "creating expense user"
 else
     echo -e "expense user already created"
-fi    
+fi
+
+mkdir /app
+validate $? " creating app user"
+
+
+
