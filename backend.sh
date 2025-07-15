@@ -74,6 +74,9 @@ validate $? " installing mysql client"
 mysql -h 172.31.94.246 -uroot -pExpenseApp@1 < /app/schema/backend.sql &>>$logfile
 validate $? "schema loading"
 
+systemctl restart backend &>>$logfile
+validate $? "restarting backend"
+
 
 
 
