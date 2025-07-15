@@ -19,7 +19,7 @@ validate(){
 
 }
 
-if [$Userid -ne 0 ]
+if [ $Userid -ne 0 ]
 then
     echo " please run the user with root access"
     exit 1
